@@ -1,6 +1,6 @@
 // requires express 
 const express = require('express');
-// const { notes } = require('/data/notes.json');
+const notes = require('./data/db.json');
 
 const PORT = process.env.PORT || 3009;
 // instantiate the server
