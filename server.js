@@ -35,6 +35,6 @@ app.get('/api/notes', (req, res) => {
     // res.send('Hello!');
   });
 
-app.listen(3009, () => {
-    console.log(`API server now on port 3009!`);
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`);
   });
