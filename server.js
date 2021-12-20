@@ -1,6 +1,6 @@
 // requires express 
 const express = require('express');
-const notes  = require('./db/db.json');
+let notes  = require('./db/db.json');
 const fs = require('fs');
 const path = require('path');
 const { filterByQuery, findById, createNewNote, validateNotes } = require('./lib/notes');
@@ -36,7 +36,7 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
   // set id based on what the next index of the array will be
   let dataVar = { 
-    id: Map.floor(Math.random()*90000),
+    id: Math.floor(Math.random()*90000),
     title: req.body.title,
     text: req.body.text
   }
@@ -47,6 +47,15 @@ app.post('/api/notes', (req, res) => {
   res.json(notes)
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  // set id based on what the next index of the array will be
+  let dataVar = notes.filter(noteSaved => noteSaved.id != req.params.id)
+  notes = dataVar;
+  fs.writeFileSync('./db/db.json', JSON.stringify(notes), function(error) {
+    if (error) throw error;
+  })
+  res.json(notes)
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 });
