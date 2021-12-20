@@ -1,16 +1,14 @@
 {
-  "name": "blue-wolf",
+  "name": "note-taker",
   "version": "1.0.0",
-  "description": "Note taker app",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "npm test",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/plaindemon"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
